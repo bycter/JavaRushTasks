@@ -8,7 +8,6 @@ package com.javarush.task.task13.task1319;
 */
 
 import java.io.*;
-import java.util.ArrayList;
 
 public class Solution {
 
@@ -18,27 +17,17 @@ public class Solution {
 
         String fileName = reader.readLine();
 
-        ArrayList<String> arrayList = new ArrayList<>();
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
 
-        String s = "";
-        while (!s.equals("exit")) {
-            s = reader.readLine();
-            arrayList.add(s);
-        }
+        while (true) {
+            String s = reader.readLine();
+            bufferedWriter.write(s);
+            if(s.equals("exit")) break;
+            bufferedWriter.newLine();
 
-        FileWriter fw = new FileWriter(fileName);
-        BufferedWriter writer = new BufferedWriter(fw);
-//        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName)));
-
-        for (String s1 : arrayList) {
-
-            writer.write(s1);
-            if (!s1.equals("exit")) {
-                writer.newLine();
-            }
         }
 
         reader.close();
-        writer.close();
+        bufferedWriter.close();
     }
 }
