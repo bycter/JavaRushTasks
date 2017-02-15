@@ -21,17 +21,21 @@ public class Solution {
         ArrayList<String> arrayList = new ArrayList<>();
 
         String s = "";
-        do {
+        while (!s.equals("exit")) {
             s = reader.readLine();
             arrayList.add(s);
-        } while (!s.equals("exit"));
+        }
 
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName)));
+        FileWriter fw = new FileWriter(fileName);
+        BufferedWriter writer = new BufferedWriter(fw);
+//        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName)));
 
         for (String s1 : arrayList) {
 
             writer.write(s1);
-            writer.write('\n');
+            if (!s1.equals("exit")) {
+                writer.newLine();
+            }
         }
 
         reader.close();
