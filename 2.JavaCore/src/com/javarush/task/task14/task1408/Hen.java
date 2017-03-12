@@ -1,6 +1,6 @@
 package com.javarush.task.task14.task1408;
 
-/* 
+/*
 Куриная фабрика
 Написать Фабрику(Factory) по производству кур(Hen):
 
@@ -25,35 +25,11 @@ package com.javarush.task.task14.task1408;
 9. Все созданные вами классы должны быть в отдельных файлах.
 */
 
-public class Solution {
+public abstract class Hen {
 
-    public static void main(String[] args) {
+    public abstract int getCountOfEggsPerMonth();
 
-//        Hen hen = HenFactory.getHen(Country.BELARUS);
-        Hen hen = new BelarusianHen();
-        hen.getCountOfEggsPerMonth();
-        System.out.println(hen.getDescription());
-    }
-
-    static class HenFactory {
-
-        static Hen getHen(String country) {
-
-            Hen hen = null;
-
-            if (country.equals("Ukraine")) {
-                hen = new UkrainianHen();
-            }
-            if (country.equals("Russia")) {
-                hen = new RussianHen();
-            }
-            if (country.equals("Moldova")) {
-                hen = new MoldovanHen();
-            }
-            if (country.equals("Belarus")) {
-                hen = new BelarusianHen();
-            }
-            return hen;
-        }
+    public String getDescription(){
+        return "Я - курица.";
     }
 }
