@@ -12,9 +12,16 @@ Singleton
 5. Сделай все конструкторы в классе Singleton приватными (private).
 6. В итоге должна быть возможность создать объект (экземпляр класса) ТОЛЬКО используя метод getInstance.
 */
-public class Solution {
 
-    public static void main(String[] args) {
+public class Singleton {
+    private static volatile Singleton instance;
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
     }
 }
-
