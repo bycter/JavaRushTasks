@@ -18,7 +18,7 @@ lvl view name
 
 Пример 2
 Ввод:
-http://javarush.ru/alpha/index.html?obj=3.14&name=Amigo
+http://javarush.ru/alpha/index.html?lvl=15&view&obj=3.14&name=Amigo
 Вывод:
 obj name
 double 3.14
@@ -32,44 +32,38 @@ import java.util.ArrayList;
 public class Solution {
 
     public static void main(String[] args) throws IOException {
-        char paramStart = '?';
-        char paramSeparator = '&';
-        char valueSeparator = '=';
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        char[] urlArray = reader.readLine().toCharArray();
+        String string = reader.readLine();
+        String[] urlArray = string.split("(&+)|(\\?+)");
 
         ArrayList<String> paramList = new ArrayList<>();
         ArrayList<String> valueList = new ArrayList<>();
 
-        String bufferString = "";
-        boolean paramFlag = false;
-        boolean valueFlag = false;
-        boolean endFlag = false;
-
-        for (char c : urlArray) {
-            if (c == paramStart) {
-                paramFlag = true;
-                valueFlag = false;
-                continue;
-            } else if (c == valueSeparator) {
-                endFlag = true;
-
-            } else if (c == paramSeparator || c == '\n') {
-
-                paramFlag = true;
-                valueFlag = false;
-                continue;
+        for (int i = 1; i < urlArray.length; i++) { // начинаем со второго элемента массива
+            if (urlArray[i].contains("=")) {
+                String[] buffer = urlArray[i].split("=");
+                paramList.add(buffer[0]);
+                valueList.add(buffer[1]);
+            } else {
+                paramList.add(urlArray[i]);
+                valueList.add("");
             }
+        }
 
-            if (endFlag) {
-                if (paramFlag) {
-                    paramList.add(bufferString);
-                } else if (valueFlag) {
-                    valueList.add(bufferString);
+        for (String aParamList : paramList) {
+            System.out.print(aParamList);
+            System.out.print(" ");
+        }
+        System.out.println("");
+
+        for (int i = 0; i < paramList.size(); i++) {
+            if (paramList.get(i).equals("obj")) {
+                try {
+                    alert(Double.parseDouble(valueList.get(i)));
+                } catch (NumberFormatException e) {
+                    alert(valueList.get(i));
                 }
-                bufferString = "";
-                endFlag = false;
             }
         }
     }
