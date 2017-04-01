@@ -31,6 +31,7 @@ public class Solution {
 
         List<Horse> horses = prepareHorsesAndStart();
         while (calculateHorsesFinished(horses) != countHorses) {
+            System.out.println("All horses have finished!");
         }
     }
 
@@ -38,13 +39,12 @@ public class Solution {
 
         int countFinished = 0;
         for (Horse horse : horses) {
-            if (horse.isFinished()) {
-                System.out.println(horse.getName() + " has finished the race!");
-                countFinished++;
-            } else {
+            if (!horse.isFinished()) {
                 System.out.println("Waiting for " + horse.getName());
+                horse.join();
+            }else{
+                countFinished++;
             }
-            horse.join();
         }
         return countFinished;
     }
@@ -86,7 +86,7 @@ public class Solution {
                 s += "" + i;
                 if (i == 1000) {
                     s = " has finished the race!";
-//                    System.out.println(getName() + s);
+                    System.out.println(getName() + s);
                     isFinished = true;
                 }
             }
