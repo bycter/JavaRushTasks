@@ -2,6 +2,18 @@ package com.javarush.task.task16.task1611;
 
 /* 
 Часы
+1. Разберись, что делает программа.
+2. Реализуй логику метода printTikTak:
+2.1. Через первые полсекунды должна выводиться в консоль фраза: Tik.
+2.2. Через вторые полсекунды должна выводиться в консоль фраза: Tak.
+
+
+Требования:
+1. Метод printTikTak должен выводить две строчки: "Tik" и "Tak".
+2. Метод printTikTak должен работать примерно секунду.
+3. Метод printTikTak должен два раза заснуть на полсекунды. Используй метод Thread.sleep(500).
+4. В консоли не должно быть сообщений после фразы "Double-check".
+5. Метод main должен создавать объект типа Clock.
 */
 
 public class Solution {
@@ -22,6 +34,7 @@ public class Solution {
             start();
         }
 
+        @Override
         public void run() {
             try {
                 while (!isStopped) {
@@ -32,7 +45,10 @@ public class Solution {
         }
 
         private void printTikTak() throws InterruptedException {
-            //add your code here - добавь код тут
+            Thread.sleep(500);
+            System.out.println("Tik");
+            Thread.sleep(500);
+            System.out.println("Tak");
         }
     }
 }
