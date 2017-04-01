@@ -5,6 +5,26 @@ import java.util.List;
 
 /* 
 join
+
+Подумай, в каком месте и для какого объекта нужно вызвать метод join, чтобы результат выводился по-порядку
+сначала для firstThread, а потом для secondThread.
+Вызови метод join в нужном месте.
+
+Пример вывода:
+firstThread : String 1
+firstThread : String 2
+...
+firstThread : String 19
+firstThread : String 20
+secondThread : String 1
+...
+secondThread : String 20
+
+Требования:
+1. Метод main должен вызывать метод join для объекта firstThread.
+2. Метод main не должен вызывать метод join для объекта secondThread.
+3. Метод main не должен вызывать System.out.println() или System.out.print().
+4. Вывод программы должен соответствовать примеру из задания.
 */
 
 public class Solution {
@@ -12,6 +32,7 @@ public class Solution {
         PrintListThread firstThread = new PrintListThread("firstThread");
         PrintListThread secondThread = new PrintListThread("secondThread");
         firstThread.start();
+        firstThread.join();
         secondThread.start();
     }
 
@@ -36,6 +57,7 @@ public class Solution {
             super(name);
         }
 
+        @Override
         public void run() {
             printList(getList(20), getName());
         }
