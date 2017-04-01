@@ -2,6 +2,22 @@ package com.javarush.task.task16.task1613;
 
 /* 
 Big Ben clock
+1. Разберись, что делает программа.
+2. Реализуй логику метода printTime так, чтобы каждую секунду выдавалось время начиная с установленного в конструкторе
+
+Пример:
+В г. Лондон сейчас 23:59:58!
+В г. Лондон сейчас 23:59:59!
+В г. Лондон сейчас полночь!
+В г. Лондон сейчас 0:0:1!
+
+
+Требования:
+1. Метод printTime должен работать примерно секунду.
+2. Метод printTime должен увеличивать (инкрементировать) количество секунд, хранимое в переменной seconds.
+3. Секунд, после икрементирования времени, не может быть больше 59. Должно увеличиться количество минут.
+4. Минут, после икрементирования времени, не может быть больше 59. Должно увеличиться количество часов.
+5. Часов, после икрементирования времени, не может быть больше 23.
 */
 
 public class Solution {
@@ -9,7 +25,7 @@ public class Solution {
 
     public static void main(String[] args) throws InterruptedException {
         Clock clock = new Clock("Лондон", 23, 59, 57);
-        Thread.sleep(4000);
+        Thread.sleep(25000);
         isStopped = true;
         Thread.sleep(1000);
     }
@@ -28,6 +44,7 @@ public class Solution {
             start();
         }
 
+        @Override
         public void run() {
             try {
                 while (!isStopped) {
@@ -38,7 +55,19 @@ public class Solution {
         }
 
         private void printTime() throws InterruptedException {
-            //add your code here - добавь код тут
+            Thread.sleep(1000);
+            seconds++;
+            if (seconds == 60) {
+                seconds = 0;
+                minutes++;
+            }
+            if (minutes == 60) {
+                minutes = 0;
+                hours++;
+            }
+            if (hours == 24) {
+                hours = 0;
+            }
 
             if (hours == 0 && minutes == 0 && seconds == 0) {
                 System.out.println(String.format("В г. %s сейчас полночь!", cityName));
