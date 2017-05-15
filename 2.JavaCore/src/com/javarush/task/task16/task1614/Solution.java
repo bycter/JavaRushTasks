@@ -5,6 +5,25 @@ import java.util.List;
 
 /* 
 Обратный отсчет
+1. Разберись, что делает программа.
+2. Реализуй логику метода printCountdown так, чтобы программа каждые полсекунды выводила объект из переменной list. Выводить нужно в обратном порядке — от переданного в Countdown индекса до нуля.
+
+Пример:
+Передан индекс 3
+
+Пример вывода в консоль:
+Строка 2
+Строка 1
+Строка 0
+
+
+Требования:
+1. Метод printCountdown должен работать примерно полсекунды.
+2. Метод printCountdown должен уменьшать (декрементировать) значение переменной countFrom.
+3. Метод printCountdown должен выводить элемент списка list с индексом равным новому значению countFrom.
+4. Метод main должен создавать один объект типа Countdown.
+5. Вывод программы должен соответствовать примеру из условия.
+
 */
 
 public class Solution {
@@ -28,6 +47,7 @@ public class Solution {
             this.countFrom = countFrom;
         }
 
+        @Override
         public void run() {
             try {
                 while (countFrom > 0) {
@@ -38,7 +58,9 @@ public class Solution {
         }
 
         public void printCountdown() throws InterruptedException {
-            //add your code here - добавь код тут
+
+            System.out.println(list.get(--countFrom));
+            Thread.sleep(500);
         }
     }
 }
