@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1616" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1617" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1618" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1619" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1620" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1621" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1622" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1623" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1624" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1625" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1626" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1627" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1628" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1629" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1630" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1631" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1632" />
+      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1633" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
