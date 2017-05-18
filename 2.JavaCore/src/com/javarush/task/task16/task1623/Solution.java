@@ -18,6 +18,7 @@ package com.javarush.task.task16.task1623;
 5. В итоге должно быть выведено в консоль 15 строк.
 */
 
+
 public class Solution {
 
     static int count = 15;
