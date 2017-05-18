@@ -2,6 +2,9 @@ package com.javarush.task.task16.task1625;
 
 /* 
 Взаимная блокировка
+1. Разберись, как работает программа.
+2. Не меняя классы T1 и T2 сделай так, чтобы их нити завершились, не обязательно успешно.
+3. Метод sleep не использовать.
 */
 
 public class Solution {
@@ -11,6 +14,8 @@ public class Solution {
     public static void main(String[] args) throws InterruptedException {
         t1.start();
         t2.start();
+        t1.interrupt();
+        t2.interrupt();
     }
 
     public static class T1 extends Thread {

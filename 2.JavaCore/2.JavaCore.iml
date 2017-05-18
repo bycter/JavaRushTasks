@@ -3,7 +3,6 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1625" />
       <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1626" />
       <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1627" />
       <excludeFolder url="file://$MODULE_DIR$/src/com/javarush/task/task16/task1628" />
