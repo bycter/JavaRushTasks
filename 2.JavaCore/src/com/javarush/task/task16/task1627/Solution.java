@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
+
     public static void main(String[] args) throws InterruptedException {
+
         OnlineGame onlineGame = new OnlineGame();
         onlineGame.start();
     }
 
     public static class OnlineGame extends Thread {
+
         public static volatile boolean isWinnerFound = false;
 
         public static List<String> steps = new ArrayList<String>();
@@ -25,7 +28,9 @@ public class Solution {
         protected Gamer gamer2 = new Gamer("Petrov", 1);
         protected Gamer gamer3 = new Gamer("Sidorov", 5);
 
+        @Override
         public void run() {
+
             gamer1.start();
             gamer2.start();
             gamer3.start();
@@ -39,16 +44,32 @@ public class Solution {
     }
 
     public static class Gamer extends Thread {
+
         private int rating;
 
         public Gamer(String name, int rating) {
+
             super(name);
             this.rating = rating;
         }
 
         @Override
         public void run() {
-            //Add your code here - добавь код тут
+
+            for (int i = 0; i < OnlineGame.steps.size(); i++) {
+                System.out.println(getName() + ":" + OnlineGame.steps.get(i));
+                try {
+                    Thread.sleep(1000 / rating);
+                } catch (InterruptedException e) {
+                    System.out.println(getName() + ":проиграл");
+                    return;
+                }
+            }
+            if (!OnlineGame.isWinnerFound) {
+                OnlineGame.isWinnerFound = true;
+                System.out.println(getName() + ":победитель!");
+            }
+
         }
     }
 }
