@@ -1,9 +1,28 @@
 package com.javarush.task.task16.task1629;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+/*
+Только по-очереди!
+1. В классе Solution создать public static класс нити Read3Strings унаследовавшись от Thread.
+2. В методе run реализовать чтение с консоли трех строк.
+3. Три подряд введенных строки должны считываться в одной нити и объединяться в одну строку через пробел.
+4. В методе main вывести результат для каждой нити.
+5. Используй join.
 
+Пример:
+Входные данные
+a
+b
+c
+d
+e
+f
+Выходные данные:
+a b c
+d e f
+
+ */
 public class Solution {
     public static volatile BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -17,5 +36,15 @@ public class Solution {
         t2.printResult();
     }
 
-    //add your code here - добавьте код тут
+    public static class Read3Strings extends Thread {
+
+        @Override
+        public void run(){
+
+        }
+
+        public void printResult (){
+
+        }
+    }
 }
