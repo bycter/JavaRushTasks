@@ -24,7 +24,6 @@ f
 Выходные данные:
 a b c
 d e f
-
  */
 public class Solution {
 
