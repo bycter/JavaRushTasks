@@ -9,6 +9,7 @@ public class Solution {
         Thread threadA = new Thread(commonThread, "Нить 1");
         Thread threadB = new Thread(commonThread, "Нить 2");
 
+        Thread.setDefaultUncaughtExceptionHandler(handler);
         threadA.start();
         threadB.start();
 
@@ -19,9 +20,10 @@ public class Solution {
     public static class TestedThread extends Thread {
         public TestedThread(Thread.UncaughtExceptionHandler handler) {
             setUncaughtExceptionHandler(handler);
-            start();
+            //start();
         }
 
+        @Override
         public void run() {
             try {
                 Thread.sleep(3000);
