@@ -1,6 +1,8 @@
 package com.javarush.task.task17.task1710;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Person {
     private String name;
@@ -12,6 +14,8 @@ public class Person {
         this.sex = sex;
         this.birthDay = birthDay;
     }
+
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
 
     public static Person createMale(String name, Date birthDay) {
         return new Person(name, Sex.MALE, birthDay);
@@ -57,7 +61,8 @@ public class Person {
         else stringBuilder.append("ж");
         stringBuilder.append(" ");
 
-        stringBuilder.append(this.getBirthDay().toString());
+
+        stringBuilder.append(dateFormat.format(this.getBirthDay()));
         return stringBuilder.toString();
     }
 }

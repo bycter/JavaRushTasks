@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 /* 
 CRUD
@@ -27,24 +26,20 @@ public class Solution {
 
     public static void main(String[] args) throws ParseException {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-
-        for (Person arg : allPeople) {
-            System.out.println(arg.toString());
-        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         Person person;
         Date dateOfBirth;
 
         switch (args[0]) {
             case "-c": // Create Person
-                if (args[2] == "м") {
-                    allPeople.add(Person.createMale(args[1], dateFormat.parse(args[1])));
+                if (args[2].equals("м")) {
+                    allPeople.add(Person.createMale(args[1], dateFormat.parse(args[3])));
                 }
-                if (args[2] == "ж") {
-                    allPeople.add(Person.createFemale(args[1], dateFormat.parse(args[1])));
+                if (args[2].equals("ж")) {
+                    allPeople.add(Person.createFemale(args[1], dateFormat.parse(args[3])));
                 }
-                System.out.println(allPeople.size());
+                System.out.println(allPeople.size() - 1);
                 break;
             case "-u":
                 person = allPeople.get(Integer.parseInt(args[1]));
@@ -52,20 +47,21 @@ public class Solution {
                     person.setName(args[2]);
                 }
 
-                if (args[3] == "м" && !person.getSex().equals(Sex.MALE)) person.setSex(Sex.MALE);
-                if (args[3] == "ж" && !person.getSex().equals(Sex.FEMALE)) person.setSex(Sex.FEMALE);
+                if (args[3].equals("м") && !person.getSex().equals(Sex.MALE)) person.setSex(Sex.MALE);
+                if (args[3].equals("ж") && !person.getSex().equals(Sex.FEMALE)) person.setSex(Sex.FEMALE);
 
                 dateOfBirth =  dateFormat.parse(args[4]);
                 if (!person.getBirthDay().equals(dateOfBirth)){
                     person.setBirthDay(dateOfBirth);
                 }
+                System.out.println(person.toString());
                 break;
             case "-d":
                 person = allPeople.get(Integer.parseInt(args[1]));
                 person.setName(null);
                 person.setSex(null);
                 person.setBirthDay(null);
-                allPeople.add(Integer.parseInt(args[1]), person);
+                allPeople.set(Integer.parseInt(args[1]), person);
                 break;
             case "-i":
                 person = allPeople.get(Integer.parseInt(args[1]));
@@ -81,33 +77,5 @@ public class Solution {
                     System.out.println(arg.toString());
                 }
         }
-    }
-/*
-Программа запускается с одним из следующих наборов параметров:
--c name sex bd
--u id name sex bd
--d id
--i id
-
-Значения параметров:
-name — имя, String
-sex — пол, «м» или «ж», одна буква
-bd — дата рождения в следующем формате 15/04/1990
--c — добавляет человека с заданными параметрами в конец allPeople, выводит id (index) на экран
--u — обновляет данные человека с данным id
--d — производит логическое удаление человека с id, заменяет все его данные на null
--i — выводит на экран информацию о человеке с id: name sex (м/ж) bd (формат 15-Apr-1990)
-id соответствует индексу в списке
-*/
-    private static void updateInfoPerson() {
-
-    }
-
-    private static void deleteInfoPerson() {
-
-    }
-
-    private static void showInfoPerson() {
-
     }
 }
