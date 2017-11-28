@@ -29,6 +29,10 @@ public class Solution {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
 
+        for (Person arg : allPeople) {
+            System.out.println(arg.toString());
+        }
+
         Person person;
         Date dateOfBirth;
 
@@ -64,20 +68,18 @@ public class Solution {
                 allPeople.add(Integer.parseInt(args[1]), person);
                 break;
             case "-i":
-                StringBuilder stringBuilder = new StringBuilder();
-
                 person = allPeople.get(Integer.parseInt(args[1]));
-
-                stringBuilder.append(person.getName());
-                stringBuilder.append(" ");
-
-                if (person.getSex() == Sex.MALE) stringBuilder.append("м");
-                else stringBuilder.append("ж");
-                stringBuilder.append(" ");
-
-                stringBuilder.append(person.getBirthDay().toString());
+                System.out.println(person.toString());
                 break;
-// Миронов м 15-Apr-1990
+            case "-p":
+                for (int i = 0; i < 5; i++) {
+                    System.out.println(i);
+                }
+                break;
+            case "-l":
+                for (Person arg : allPeople) {
+                    System.out.println(arg.toString());
+                }
         }
     }
 /*
@@ -97,8 +99,6 @@ bd — дата рождения в следующем формате 15/04/1990
 -i — выводит на экран информацию о человеке с id: name sex (м/ж) bd (формат 15-Apr-1990)
 id соответствует индексу в списке
 */
-
-
     private static void updateInfoPerson() {
 
     }

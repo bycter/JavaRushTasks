@@ -44,4 +44,20 @@ public class Person {
     public void setBirthDay(Date birthDay) {
         this.birthDay = birthDay;
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(this.getName());
+        stringBuilder.append(" ");
+
+        if (this.getSex() == Sex.MALE) stringBuilder.append("м");
+        else stringBuilder.append("ж");
+        stringBuilder.append(" ");
+
+        stringBuilder.append(this.getBirthDay().toString());
+        return stringBuilder.toString();
+    }
 }
