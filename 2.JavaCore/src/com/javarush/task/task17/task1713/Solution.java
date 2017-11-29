@@ -10,7 +10,7 @@ import java.util.*;
 4. Список будет использоваться нитями, поэтому позаботьтесь, чтобы все методы были синхронизированы.
 */
 
-public class Solution implements List {
+public class Solution implements List<Long> {
 
     private ArrayList<Long> original = new ArrayList<Long>();
 
@@ -19,111 +19,79 @@ public class Solution implements List {
     }
 
     @Override
-    public int size() {
+    synchronized public int size() {
         return original.size();
     }
 
     @Override
-    public boolean isEmpty() {
-        return original.size() == 0;
+    synchronized public boolean isEmpty() {
+        return original.isEmpty();
     }
 
     @Override
-    public boolean contains(Object o) {
-        synchronized (this) {
-            return original.contains(o);
-        }
+    synchronized public boolean contains(Object o) {
+        return original.contains(o);
     }
 
     @Override
-    public Iterator iterator() {
-        synchronized (this) {
-            return original.iterator();
-        }
+    synchronized public Iterator iterator() {
+        return original.iterator();
     }
 
     @Override
-    public Object[] toArray() {
-        synchronized (this) {
-            return original.toArray();
-        }
+    synchronized public Object[] toArray() {
+        return original.toArray();
     }
 
     @Override
-    public boolean add(Object o) {
-        synchronized (this) {
-            if (o == null)
-                return original.add(null);
-            if (o instanceof Long)
-                return original.add((Long) o);
-        }
-        return false;
+    synchronized public boolean add(Long aLong) {
+        return original.add(aLong);
     }
 
     @Override
-    public boolean remove(Object o) {
-        synchronized (this) {
-            return original.remove(o);
-        }
+    synchronized public boolean remove(Object o) {
+        return original.remove(o);
     }
 
     @Override
-    public Object[] toArray(Object[] a) {
-        synchronized (this) {
-            return original.toArray(a);
-        }
+    synchronized public Object[] toArray(Object[] a) {
+        return original.toArray(a);
     }
 
     @Override
-    public boolean addAll(Collection c) {
-        synchronized (this) {
-            return original.addAll(c);
-        }
+    synchronized public boolean addAll(Collection c) {
+        return original.addAll(c);
     }
 
     @Override
-    public boolean addAll(int index, Collection c) {
-        synchronized (this) {
-            return original.addAll(index, c);
-        }
+    synchronized public boolean addAll(int index, Collection c) {
+        return original.addAll(index, c);
     }
 
     @Override
-    public void clear() {
-        synchronized (this) {
-            original.clear();
-        }
+    synchronized public void clear() {
+        original.clear();
     }
 
     @Override
-    public Object get(int index) {
-        synchronized (this) {
-            return original.get(index);
-        }
+    synchronized public Long get(int index) {
+        return original.get(index);
     }
 
     @Override
-    public Object set(int index, Object element) {
-        synchronized (this) {
-            if (element == null)
-                return original.set(index, null);
-            if (element instanceof Long)
-                return original.set(index, (Long) element);
-        }
-        return false;
+    synchronized public Long set(int index, Long element) {
+        return original.set(index, element);
     }
 
     @Override
-    synchronized public void add(int index, Object element) {
-        if (element == null)
-            original.add(index, null);
-        if (element instanceof Long)
-            original.add(index, (Long) element);
+    synchronized public void add(int index, Long element) {
+        original.add(index, element);
     }
 
     @Override
-    synchronized public Object remove(int index) {
-        return null;
+    synchronized public Long remove(int index) {
+
+        return original.remove(index);
     }
 
     @Override
@@ -133,36 +101,36 @@ public class Solution implements List {
 
     @Override
     synchronized public int lastIndexOf(Object o) {
-
+        return original.lastIndexOf(o);
     }
 
     @Override
     synchronized public ListIterator listIterator() {
-
+        return original.listIterator();
     }
 
     @Override
     synchronized public ListIterator listIterator(int index) {
-
+        return original.listIterator(index);
     }
 
     @Override
     synchronized public List subList(int fromIndex, int toIndex) {
-
+        return original.subList(fromIndex, toIndex);
     }
 
     @Override
     synchronized public boolean retainAll(Collection c) {
-
+        return original.retainAll(c);
     }
 
     @Override
     synchronized public boolean removeAll(Collection c) {
-
+        return original.removeAll(c);
     }
 
     @Override
     synchronized public boolean containsAll(Collection c) {
-
+        return original.containsAll(c);
     }
 }
